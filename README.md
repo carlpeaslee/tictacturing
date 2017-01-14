@@ -10,11 +10,11 @@ I know it can be difficult sometimes to figure out how to integrate all those di
 
 The mindset for this course is ‘Geting to MVP’. MVP is a term startups and developers will often use that stands for Minimum Viable Product –– that is, the simplest functioning version of our intended application –– but which still demonstrates our larger goals and ideas.
 
-[](/slides/00_00.002.jpeg)
+![](/slides/00_00.002.jpeg)
 
 Regardless of whether or not you are working on a startup with a short runway or a side-project you’d just like to see get off the ground, it’s often beneficial to the application development process to quickly get to MVP so that you can begin the cycle of iteration and improvement.
 
-[](/slides/00_00.003.jpeg)
+![](/slides/00_00.003.jpeg)
 
 As an example project for this course, we are going to create the MVP for a hobby project I’ve been working on called TicTacTuring (named, of course, after the machine learning pioneer [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing)).
 
