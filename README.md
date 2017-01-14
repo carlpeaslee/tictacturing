@@ -1,21 +1,35 @@
 #00_01_start
 
-Hello! Welcome! My name is Carl Peaslee and in this course we are going to plan, configure, create, and finally deploy a scalable full-stack React and Relay application –– complete with a database and authentication.
+##What You Should Know
 
-This course is intended for people who have a good familiarity with many of the elements of full-stack JavaScript web development and want to create their own web application and then deploy it out onto the real live internet.
+Before we get started, let's go over some of the skills you should have before you begin this class. I’ll also lay out the different tools, libraries, frameworks, and services we’ll be working with.
 
-I know it can be difficult sometimes to figure out how to integrate all those different technologies and then more difficult still to get them working together in a production environment.
+First off, it’s important that you have a solid understanding of JavaScript (in particular it will be helpful to have some knowledge of es6 syntax),
+React, and then of course HTML, and CSS.
 
-The mindset for this course is ‘Geting to MVP’. MVP is a term startups and developers will often use that stands for Minimum Viable Product –– that is, the simplest functioning version of our intended application –– but which still demonstrates our larger goals and ideas.
+In addition, we’re going to be using a number of other frameworks and libraries  –– and while you certainly won’t have to be an expert with any of them to complete this course, it might be valuable for you to at least have some passing familiarity with them.
 
-Regardless of whether or not you are working on a startup with a short runway or a side-project you’d just like to see get off the ground, it’s often beneficial to the application development process to quickly get to MVP so that you can begin the cycle of iteration and improvement.
+I also want to draw attention to the fact that our application will be employing Relay to manage our application state and to pass data back and forth with our api and database.
 
-As an example project for this course, we are going to create the MVP for a hobby project I’ve been working on called TicTacTuring (named, of course, after the machine learning pioneer [Alan Turing](https://en.wikipedia.org/wiki/Alan_Turing)).
+If you haven't worked with Relay before, don't worry! Although this course won't dive too deeply into many of Relay's more powerful tools, it will help you get a sense of the libraries potential –– and provide you with the resources you'll need to learn more.
 
-Let’s take a look at what you’re going to be building.
+This course will also make use of a few other libraries:
 
-I’ve always wanted to use machine learning in a project but I haven’t yet had a reason to implement it. My idea was to make a site where users could create an account and then play simple games (like TicTacToe) against mystery opponents who may or may not be machines pretending to be human.
+-Styled Components is a nifty styling library we’ll be using to make our components look good.
+-Material UI is a react based implementation of Google’s Material Design guidelines.
+-React Router will allow us to make use of clientside routing in our single page application.
+-React Konva will give us a set of React friendly HTML canvas tools.
 
-After a user finished playing, the second part of the game would be to try and guess whether or not their opponent was a human or a robot.
+And then we’ll be using Git (as well as a number of other commands) via the command line for version control and deployment.
 
-I also wanted users to be able to maintain a profile, track their game records, and maybe someday compete to climb a scoreboard which would track the best robot hunters.
+We are also going to be using a number of services that have been created by companies for developers to help them speed up development. All of them offer free versions of their product. As we implement these services, I’ll also make sure to point you towards resources that can teach you more about them as well as towards alternatives that could be suitable substitutions if you want to create your own solution.
+
+-GibHub is where we’ll be remotely storing our version control information.
+-Heroku will allow us to easily deploy our site to a production environment and offer us hosting services.
+-Auth0 will provide us with a prebuilt authentication system so our users can login and maintain accounts.
+-Google Domains will provide us with a domain name.
+-And Graph.Cool is a neat Database as a Service company that offers awesome Relay and Auth0 integration.
+
+Lastly, I just want to say a word about IDE’s (or Interactive Development Environments) –– that is, the program I’ll be using to write my code.
+
+You don’t have to use the same program and configurations as me to complete this course –– by all means, use whatever IDE you’re most comfortable with –– but if you want to follow along more closely (or make use of some of the nice features I’ll be accessing) –– you should use GitHub’s Atom IDE, configured with Facebook’s Nuclide Package. I’ve attached information about the specifics of my configuration as well as basic instruction about how to set them up on a Mac.
