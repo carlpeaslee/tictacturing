@@ -1,35 +1,53 @@
-#00_01_start
+#00_02_start
 
-##What You Should Know
+##Installing Local Dependencies
 
-Before we get started, let's go over some of the skills you should have before you begin this class. I’ll also lay out the different tools, libraries, frameworks, and services we’ll be working with.
+Throughout this course, we're going to be accessing a number of programs via our command line which means that you'll need to have them installed and running on your local machine.  
 
-First off, it’s important that you have a solid understanding of JavaScript (in particular it will be helpful to have some knowledge of es6 syntax),
-React, and then of course HTML, and CSS.
+The programs you'll need are:
+-node / npm
+-yarn
+-git
+-heroku-cli
+-homebrew
+-create-react-app
 
-In addition, we’re going to be using a number of other frameworks and libraries  –– and while you certainly won’t have to be an expert with any of them to complete this course, it might be valuable for you to at least have some passing familiarity with them.
+If you already have all of these, feel free to skip this video!
 
-I also want to draw attention to the fact that our application will be employing Relay to manage our application state and to pass data back and forth with our api and database.
+The first application we're going to install is homebrew:
 
-If you haven't worked with Relay before, don't worry! Although this course won't dive too deeply into many of Relay's more powerful tools, it will help you get a sense of the libraries potential –– and provide you with the resources you'll need to learn more.
+First we'll navigate to their website:
 
-This course will also make use of a few other libraries:
+http://brew.sh/
 
--Styled Components is a nifty styling library we’ll be using to make our components look good.
--Material UI is a react based implementation of Google’s Material Design guidelines.
--React Router will allow us to make use of clientside routing in our single page application.
--React Konva will give us a set of React friendly HTML canvas tools.
+And then we'll copy and paste this line into our terminal:
 
-And then we’ll be using Git (as well as a number of other commands) via the command line for version control and deployment.
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
-We are also going to be using a number of services that have been created by companies for developers to help them speed up development. All of them offer free versions of their product. As we implement these services, I’ll also make sure to point you towards resources that can teach you more about them as well as towards alternatives that could be suitable substitutions if you want to create your own solution.
+Once that's installed, you should have `brew` available from your command line.
 
--GibHub is where we’ll be remotely storing our version control information.
--Heroku will allow us to easily deploy our site to a production environment and offer us hosting services.
--Auth0 will provide us with a prebuilt authentication system so our users can login and maintain accounts.
--Google Domains will provide us with a domain name.
--And Graph.Cool is a neat Database as a Service company that offers awesome Relay and Auth0 integration.
+First we'll install node / npm and yarn. It's ok if you haven't heard of yarn before –– just know its basically like npm but with some added features that help keep your dependencies working together nicely.
 
-Lastly, I just want to say a word about IDE’s (or Interactive Development Environments) –– that is, the program I’ll be using to write my code.
+```bash
+brew install yarn
+```
 
-You don’t have to use the same program and configurations as me to complete this course –– by all means, use whatever IDE you’re most comfortable with –– but if you want to follow along more closely (or make use of some of the nice features I’ll be accessing) –– you should use GitHub’s Atom IDE, configured with Facebook’s Nuclide Package. I’ve attached information about the specifics of my configuration as well as basic instruction about how to set them up on a Mac.
+This will give us both node and yarn.
+
+Next up, heroku-cli:
+
+Let's get this one from Heroku's website:
+
+https://devcenter.heroku.com/articles/heroku-cli
+
+Just download and run the installer.
+
+Finally, let's get create-react-app from the command line with
+
+```bash
+npm install -g create-react-app
+```
+
+Ok, we're ready to get developing!
