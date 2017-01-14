@@ -17,28 +17,28 @@ Get a really good idea but think it might be a bit tricky to implement? Write it
 
 Here, for instance, are some of the features we are gong to implement and some of the features that I want to add but I’m afraid I’m going to have to save for later.
 
-[](/slides/01_00.001.jpeg)
+[](slides/01_00.001.jpeg)
 
 To guide the first state of our development, we’re going to create two important sets of documents. These will be our ‘User Stories’ and our ‘Wireframes’.
 
 Our user stories are intended to aid development by providing us with a linear, narrative-style description of a hypothetical user's action as they utilize our application.
 
-[](/slides/01_00.002.jpeg)
+[](slides/01_00.002.jpeg)
 
-[](/slides/01_00.003.jpeg)
+[](slides/01_00.003.jpeg)
 
-[](/slides/01_00.004.jpeg)
+[](slides/01_00.004.jpeg)
 
-[](/slides/01_00.005.jpeg)
+[](slides/01_00.005.jpeg)
 
-[](/slides/01_00.006.jpeg)
+[](slides/01_00.006.jpeg)
 
-[](/slides/01_00.007.jpeg)
+[](slides/01_00.007.jpeg)
 
-[](/slides/01_00.008.jpeg)
+[](slides/01_00.008.jpeg)
 
-[](/slides/01_00.009.jpeg)
+[](slides/01_00.009.jpeg)
 
 If you haven't done wire-framing before, don't be afraid to use a pen and paper. But if you're looking for a slick tool, there are a bunch of them. Here are a few:
 
-[](/slides/01_00.010.jpeg)
+[](slides/01_00.010.jpeg)
