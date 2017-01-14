@@ -1,4 +1,4 @@
-#00_01_start
+#00_00_start
 
 Hello! Welcome! My name is Carl Peaslee and in this course we are going to plan, configure, create, and finally deploy a scalable full-stack React and Relay application –– complete with a database and authentication.
 
