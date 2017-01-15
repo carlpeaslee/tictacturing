@@ -8,7 +8,40 @@ For our first component, we’re going to implement a Drawer from material-ui an
 Also, when I think about this component -- NavDrawer let’s call it, I don’t think that it’s going to need access to any of our data so that means we don’t need to make it a container –– it can just be a component.
 We’ll begin by importing our soon to be created component into Template and then will go ahead and create it.
 
-First I’m going to create my component
+```javascript
+/*    /src/containers/Template    */
+import React, {Component} from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import NavDrawer from '../components/NavDrawer'
+
+
+injectTapEventPlugin()
+
+class Template extends Component {
+
+  render () {
+    return (
+      <MuiThemeProvider>
+        <div>
+          <NavDrawer/>
+          <header>
+            <h1>TicTacTuring</h1>
+
+          </header>
+          <main>
+            {this.props.children}
+          </main>
+        </div>
+    </MuiThemeProvider>
+    )
+  }
+}
+
+export default Template
+```
+
+Now I’m going to create my component
 
 And I’m going to export it.
 
@@ -30,8 +63,6 @@ Now let’s write the function that will open and close the drawer.
 
 I’ll create a toggle function here that will say whenever this function gets called, look at the previous state of open and then set the new state to be the opposite of that.
 
-I’m also going to annotate my function’s variable types with flow.
-
 And I’ll pass my toggle function to my button as a prop. And notice here that I’m using that ‘onTouchTap’ prop that we injected earlier. I could say onClick –– and for non-material-ui components, that’s usually what you’d want to do –– but for Material-Ui components, onTouchTap tends to work better for mobile devices.
 
 I’m also going to give this toggle function to each of my menu-items because I want my drawer to close when the user selects either of them.
@@ -43,6 +74,80 @@ Ok, cool. My drawer opens and closes... But my menu-items aren’t links yet ...
 To make them link, I’m going to bring in another react-router component, this one is called Link
 
 I’ll import it... And then I’ll wrap each of my menu items in it. And then each Link component wants a ‘to’ prop so it knows where TO direct the user.
+
+
+```javascript
+/*    /src/components/NavDrawer.js    */
+import React, {Component} from 'react'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import Divider from 'material-ui/Divider'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Menu from 'material-ui/svg-icons/navigation/menu'
+import {Link} from 'react-router'
+
+class NavDrawer extends Component {
+
+  state = {
+    open: true
+  }
+
+  toggle = () => {
+    this.setState( (prevState: {open: boolean}, props: object) => {
+      return {
+        open: !prevState.open
+      }
+    })
+  }
+
+
+  render () {
+    return (
+      <div>
+        <FloatingActionButton
+          onTouchTap={this.toggle}
+        >
+          <Menu />
+        </FloatingActionButton>
+        <Drawer
+          open={this.state.open}
+        >
+          <div
+            style={{
+              height: '100px',
+              backgroundColor: 'salmon'
+            }}
+          >
+            Login Component
+          </div>
+          <Divider/>
+          <Link
+            to={'/'}
+          >
+            <MenuItem
+              onTouchTap={this.toggle}
+              primaryText='Play'
+            />
+          </Link>
+          <Link
+            to={'/profile'}
+          >
+            <MenuItem
+              onTouchTap={this.toggle}
+              primaryText={'Profile'}
+            />
+          </Link>
+
+
+        </Drawer>
+
+      </div>
+    )
+  }
+}
+
+export default NavDrawer
+```
 
 Let’s test... Great, our routing is working... But I don’t like the way my menu-items are underlined like that.
 
