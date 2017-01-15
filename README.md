@@ -2,7 +2,6 @@
 
 ##Setting up React Router
 
-
 Let’s take a second and look again at the site we’re working towards. Our application, like many single page applications, relies on routing –– or the ability to read changes in the url and use that information to inform the application about which views and data should be rendered to the page.
 
 Since we’re building a single page application, we need to utilize a client side routing library to help our application manage and consume the information stored in the browser’s url.
