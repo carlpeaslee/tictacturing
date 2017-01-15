@@ -120,6 +120,25 @@ console.log('madlibs = ', madlibs)
 
 Now I can write whatever css I want! I’m going to make this component have absolute positioning. And then I know I need to change its left margin to make it move along with the drawer... Now here is where the cool javascript stuff comes in.
 
+```javascript
+/*    /src/styled/DrawerToggleButton.js     */
+import React from 'react'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Menu from 'material-ui/svg-icons/navigation/menu'
+
+const DrawerToggleButton = (props) => {
+  return (
+    <FloatingActionButton
+      {...props}
+    >
+        <Menu/>
+    </FloatingActionButton>
+  )
+}
+
+export default DrawerToggleButton
+```
+
 Right here inside my css I can write javascript just by wrapping it in ‘${}’ and I’m going to create a quick function which accepts my components props as an argument, and then I’m going to use a succinct little ternary operator to basically say, Hey, StayVisible component, if you’re receiving the open prop –– if that prop is true, that means I want you to have a margin left of props.width pixels... If you don’t see that open prop, then don’t worry about it, just go about your business.
 
 ```javascript
@@ -146,5 +165,35 @@ console.log('isThereAFire = ', isThereAFire)
 And then lastly we’re going to give this component a transition property so that when it does change its margin, it uses a nice smooth transition.
 
 Finally I’m going to make sure that StayVisible is also getting all of the props that it needs.
+
+```javascript
+/*    /src/styled/DrawerToggleButton.js     */
+import React from 'react'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Menu from 'material-ui/svg-icons/navigation/menu'
+import styled from 'styled-components'
+
+const StayVisible = styled.div`
+  position: absolute;
+  margin-left: ${(props) => (props.open) ? `${props.width}px` : 'none'};
+  transition: margin .2s;
+`
+
+const DrawerToggleButton = (props) => {
+  return (
+    <StayVisible
+      {...props}
+    >
+      <FloatingActionButton
+        {...props}
+      >
+          <Menu/>
+      </FloatingActionButton>
+    </StayVisible>
+  )
+}
+
+export default DrawerToggleButton
+```
 
 Ok, great, my components are all rendering the way I want them to.
