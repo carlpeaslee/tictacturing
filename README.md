@@ -26,14 +26,11 @@ import MenuItem from 'material-ui/MenuItem'
 const MenuLink = (props) => {
   return (
     <Link
-      to={props.to}
       style={{
         textDecoration: 'none'
       }}
     >
-        <MenuItem
-          {...props}
-        />
+        <MenuItem/>
     </Link>
   )
 }
@@ -111,5 +108,30 @@ export default NavDrawer
 ```
 
 Now in MenuLink I’m going to make sure that these props are being provided to my component, and then distributed where they are needed. And here I’m going to pass all of my props to MenuItem like this...
+
+```javascript
+/*    /src/styled/MenuLink.js   */
+import React from 'react'
+import {Link} from 'react-router'
+import MenuItem from 'material-ui/MenuItem'
+
+
+const MenuLink = (props) => {
+  return (
+    <Link
+      to={props.to}
+      style={{
+        textDecoration: 'none'
+      }}
+    >
+        <MenuItem
+          {...props}
+        />
+    </Link>
+  )
+}
+
+export default MenuLink
+```
 
 Cool so things work on the home page when I visit but I see that I still haven’t fixed my underlining. Normally I try and avoid using too many inline styles but sometimes its the easiest way to do things –– especially when we’re using Material-Ui which relies very strongly on inline styles.
