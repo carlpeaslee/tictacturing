@@ -15,6 +15,31 @@ Now here is my MenuLink component -- and actually I’m just going to bring in R
 
 This MenuLink is not going to need access to state, it’s just going to change based on the props that it receives.
 
+```javascript
+/*    /src/styled/MenuLink.js   */
+import React from 'react'
+import {Link} from 'react-router'
+import MenuItem from 'material-ui/MenuItem'
+
+
+const MenuLink = (props) => {
+  return (
+    <Link
+      to={props.to}
+      style={{
+        textDecoration: 'none'
+      }}
+    >
+        <MenuItem
+          {...props}
+        />
+    </Link>
+  )
+}
+
+export default MenuLink
+```
+
 I’m going to bring in Link and MenuItem from NavDrawer and delete them from NavDrawer...And put in my new MenuLink, passing it the same props that link and MenuItem had...
 
 ```javascript
