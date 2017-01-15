@@ -3,7 +3,7 @@ import Drawer from 'material-ui/Drawer'
 import Divider from 'material-ui/Divider'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import Menu from 'material-ui/svg-icons/navigation/menu'
-import {Link} from 'react-router'
+import MenuLink from '../styled/MenuLink'
 
 class NavDrawer extends Component {
 
