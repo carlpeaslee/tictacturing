@@ -54,6 +54,42 @@ And of course the drawer component. And then I’ll want a menu-item, and a divi
 
 I’ll import each of these to my component and then add them to the render function.
 
+```javascript
+/*    /src/components/NavDrawer.js    */
+import React, {Component} from 'react'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import Divider from 'material-ui/Divider'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Menu from 'material-ui/svg-icons/navigation/menu'
+
+class NavDrawer extends Component {
+
+  render () {
+    return (
+      <div>
+        <FloatingActionButton>
+          <Menu />
+        </FloatingActionButton>
+        <Drawer>
+          <Divider/>
+          <MenuItem
+            primaryText='Play'
+          />
+          <MenuItem
+            primaryText={'Profile'}
+          />
+        </Drawer>
+
+      </div>
+    )
+  }
+}
+
+export default NavDrawer
+```
+
+
 When I check my site I see that the button is there but the drawer isn’t. Ah, that is because I’m not passing it all of the props it needs. When I check the material-ui documentation, I see that to get the drawer to have the behavior I want, I need to pass it an open props so that it knows when it should be open.  And I’m also going to give it a width props of 250.
 
 I’ll initialize open as true so that my drawer starts out open...
@@ -69,6 +105,71 @@ And I’ll pass my toggle function to my button as a prop. And notice here that 
 I’m also going to give this toggle function to each of my menu-items because I want my drawer to close when the user selects either of them.
 
 Let’s take a look at our page now.
+
+```javascript
+/*    /src/components/NavDrawer.js    */
+import React, {Component} from 'react'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import Divider from 'material-ui/Divider'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import Menu from 'material-ui/svg-icons/navigation/menu'
+
+class NavDrawer extends Component {
+
+  state = {
+    open: true
+  }
+
+  toggle = () => {
+    this.setState( (prevState) => {
+      return {
+        open: !prevState.open
+      }
+    })
+  }
+
+
+  render () {
+    return (
+      <div>
+        <FloatingActionButton
+          onTouchTap={this.toggle}
+        >
+          <Menu />
+        </FloatingActionButton>
+        <Drawer
+          open={this.state.open}
+        >
+          <div
+            style={{
+              height: '100px',
+              backgroundColor: 'salmon'
+            }}
+          >
+            Login Component
+          </div>
+          <Divider/>
+
+          <MenuItem
+            onTouchTap={this.toggle}
+            primaryText='Play'
+          />
+
+          <MenuItem
+            onTouchTap={this.toggle}
+            primaryText={'Profile'}
+          />
+
+        </Drawer>
+
+      </div>
+    )
+  }
+}
+
+export default NavDrawer
+```
 
 Ok, cool. My drawer opens and closes... But my menu-items aren’t links yet ...
 
