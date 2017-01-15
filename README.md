@@ -2,6 +2,7 @@
 
 ##Deploying to Heroku
 
+[Live on Heroku](https://tictacturing-01-06.herokuapp.com/)
 
 I know we’ve been doing a lot of setup work and you’re probably anxious to start building some of the sites functionality but before we get to that we’re going to see how we can set up our application so that it can be easily deployed out to the real live internet via Heroku.
 
