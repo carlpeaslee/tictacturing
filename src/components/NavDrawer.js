@@ -13,7 +13,7 @@ class NavDrawer extends Component {
   }
 
   toggle = () => {
-    this.setState( (prevState: {open: boolean}, props: object) => {
+    this.setState( (prevState) => {
       return {
         open: !prevState.open
       }
