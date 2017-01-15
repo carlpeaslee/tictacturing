@@ -20,18 +20,35 @@ yarn add react-router
 
 Next we’re going to open up our index.js file and get to work bringing in our router.
 
-(I’m going to make a few cosmetic changes to the pre-generated code too while I’m here because this is what I’m use to //remove semi-colons)
-
 I’m going to import the Router module and make this our root component. And then I’m also going to bring in browserHistory and pass it as a prop to Router’s history options.
 
 history={browserHistory} will allow our application to access our browser’s history information –– which means that we can use nice pretty urls. React Router provides us with other history options but I think this one is the most useful.
 
+
 Next we’re going to create the different routes our site will need so that we can inform our router about them.
 
+```javascript
+/*    /src/index.js   */
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {Router, browserHistory} from 'react-router'
+import Routes from './routes'
+
+ReactDOM.render(
+  <Router
+    history={browserHistory}
+    routes={Routes}
+  />,
+  document.getElementById('root')
+)
+```
+
 I’m going to preemptively import them and add them to my src/index.js file even though we know they don’t actually exist yet... So let’s fix that!
+
 As you perhaps saw when I was importing my soon to be created files, I decided I’m going to put them in a new folder called ‘routes’  and then create an index.js file to go in it.
 
-(a side note –– When I create an index file in a directory, javascript allows me access that file simply by referring to the directory. It’s not a big deal, I just think it can make things look a little cleaner when we start importing and exporting more parts of our application.
+(A side note –– When I create an index file in a directory, javascript allows me access that file simply by referring to the directory. It’s not a big deal, I just think it can make things look a little cleaner when we start importing and exporting more parts of our application.
 
 First I’ll bring in React ... and then a couple more components from React Router, namely Route and IndexRoute.
 
@@ -45,6 +62,27 @@ And the second prop Route wants is ‘component’ –– this will tell the rou
 
 And I’m going to optimistically type in the name of a component even though it doesn’t quite exist yet.
 
+```javascript
+import React from 'react'
+import {Route, IndexRoute} from 'react-router'
+import Template from '../containers/Template'
+
+const createRoutes = () => {
+  return (
+    <Route
+      path='/'
+      component={Template}
+    >
+      //where I'll add my other routes
+    </Route>
+  )
+}
+
+const Routes = createRoutes()
+
+export default Routes
+```
+
 At the bottom of this file I’m going to create the component named Routes which you’ll remember I imported in my src/index file and I’m going to set Routes equal to the component that gets returned by my createRoutes function and then export Routes at the bottom of the page.
 
 Because we’re going to make that component now!
@@ -53,13 +91,38 @@ Let’s create a directory in our src directory called ‘containers’ and then
 
 I bring in react and this time I’ll also bring in Component and create my new Template component
 
-The cool thing about react-router and the route component is that it allows me to direct my router to render children roots inside their parents.
+The cool thing about react-router and the route component is that it allows me to direct my router to render children routes inside their parents.
 
-This means I can make this template root act like exactly that, a template. I’m going to create a space for a header. And a main tag... And a footer... And then I’m going to use’s React’s {this.props.children} feature to tell my template to render all of its children, here between the two main tags.
+This means I can make this template root act like exactly that, a template. I’m going to create a space for a header. And a main tag... And then I’m going to use’s React’s {this.props.children} feature to tell my template to render all of its children, here between the two main tags.
 
 And so what this all amounts to is that I’ve now created a template interface that will appear on every page and then the unique contents of each of those pages will appear here when the user navigates to those specific routes.
 
 I won’t forget to export the file.
+
+```javascript
+/*  /src/containers/Template.js   */
+
+import React, {Component} from 'react'
+
+class Template extends Component {
+
+  render () {
+    return (
+      <div>
+        <header>
+          <h1>TicTacTuring</h1>
+        </header>
+        <main>
+          {this.props.children}
+        </main>
+      </div>
+    )
+  }
+}
+
+export default Template
+
+```
 
 Great, let’s go back to routes...
 And if I start things up I should be able to see the template component I just created being rendered to the screen.
@@ -70,8 +133,71 @@ Let’s also declare a home page with Index Route -- no path needed there... and
 
 I’ll import these files.
 
+```javascript
+import React from 'react'
+import {Route, IndexRoute} from 'react-router'
+import Template from '../containers/Template'
+import Home from '../containers/Home'
+import Profile from '../containers/Profile'
+
+const createRoutes = () => {
+  return (
+    <Route
+      path='/'
+      component={Template}
+    >
+      <IndexRoute
+        component={Home}
+      />
+      <Route
+        path='/profile'
+        component={Profile}
+      />
+    </Route>
+  )
+}
+
+const Routes = createRoutes()
+
+export default Routes
+```
+
 And then make them quickly by copying and pasting our template file from before!
 
-Now if I start up my application I can see that Home is being rendered on my indexroute -- and if I navigate to Profile, there is my profile component.
+```javascript
+/*    /src/containers/Home.js   */
+import React, {Component} from 'react'
 
-Great.
+class Home extends Component {
+
+  render () {
+    return (
+      <div>
+        <h3>Home</h3>
+      </div>
+    )
+  }
+}
+
+export default Home
+```
+
+```javascript
+/*    /src/containers/Profile.js   */
+import React, {Component} from 'react'
+
+class Profile extends Component {
+
+  render () {
+    return (
+      <div>
+        <h3>Profile</h3>
+      </div>
+    )
+  }
+}
+
+export default Profile
+```
+
+Now if I start up my application I can see that Home is being rendered on my Index Route -- and if I navigate to Profile, there is my profile component.
