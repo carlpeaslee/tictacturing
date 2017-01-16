@@ -1,12 +1,11 @@
 import React, {Component} from 'react'
+import TicTacToe from './TicTacToe'
 
 class Home extends Component {
 
   render () {
     return (
-      <div>
-        <h3>Home</h3>
-      </div>
+      <TicTacToe/>
     )
   }
 }
