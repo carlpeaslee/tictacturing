@@ -2,6 +2,8 @@
 
 ##Building TicTacToe Part 2
 
+[Live on Heroku](https://tictacturing-02-06.herokuapp.com/)
+
 The next thing I'd like to do for my TicTacToe game is to create a component, kind of like Board, but that instead of generating the grid, creates all of our game's squares.
 
 I'm going to create that component in my TicTacToe container... And I'm going to pass it all of this state information that it's going to need... and then I also happen to know that to arrange the individual squares on my canvas, I'm going to need each squares top left corner coordinates... So I'll make those in my componentWillMount
