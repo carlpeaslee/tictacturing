@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Stage} from 'react-konva'
 import Board from '../styled/Board'
+import Squares from '../styled/Squares'
 
 class TicTacToe extends Component {
 
@@ -29,22 +30,26 @@ class TicTacToe extends Component {
     let rows = this.state.rows
     let unit = size / rows
 
+    let coordinates = []
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < rows; x++) {
+        coordinates.push([x*unit,y*unit])
+      }
+    }
 
     this.setState({
       size,
       rows,
       unit,
+      coordinates
     })
   }
 
 
-  makeSquares = () => {
-    //generate the squares
-  }
-
   move = (moveIndex, mark) => {
     //when a user or ai clicks on a square
     //update state to reflect new move
+    console.log('hello', moveIndex, mark)
   }
 
   makeTuringTest = () => {
@@ -61,7 +66,13 @@ class TicTacToe extends Component {
     let {
       size,
       unit,
-      rows
+      rows,
+      coordinates,
+      gameState,
+      win,
+      gameOver,
+      yourTurn,
+      ownMark
     } = this.state
     return (
       <div>
@@ -74,7 +85,16 @@ class TicTacToe extends Component {
             size={size}
             rows={rows}
           />
-          {/* <Squares/> */}
+          <Squares
+            unit={unit}
+            coordinates={coordinates}
+            gameState={gameState}
+            win={win}
+            gameOver={gameOver}
+            yourTurn={yourTurn}
+            ownMark={ownMark}
+            move={this.move}
+          />
         </Stage>
           {/* <TuringTest/> */}
       </div>
