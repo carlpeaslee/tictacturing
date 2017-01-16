@@ -2,6 +2,8 @@
 
 ##Building TicTacToe Part 1
 
+[Live on Heroku](https://tictacturing-02-05.herokuapp.com/)
+
 Now that our profile page is done, we get to make our TicTacToe board –– this is going to require some fun problem solving so before I show you how I decided to make my TicTacToe board, I encourage you to try making it your own way. There are definitely lots of ways to solve these kinds of problems.
 
 To make my life a little easier, I’m going to bring in a library called ‘react-konva’ and its dependency 'konva'. React-konva is a canvas library that will allow me to more easily create, manipulate, and respond to user interaction with a HTML5 canvas element.
