@@ -6,16 +6,16 @@ import SiteHeader from '../styled/SiteHeader'
 import Main from '../styled/Main'
 import '../utils/global.css'
 
-
 injectTapEventPlugin()
 
 class Template extends Component {
-
   render () {
     return (
       <MuiThemeProvider>
         <div>
-          <NavDrawer/>
+          <NavDrawer
+            auth={this.props.route.auth}
+          />
           <SiteHeader/>
           <Main>
             {this.props.children}
