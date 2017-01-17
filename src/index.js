@@ -28,7 +28,6 @@ Relay.injectNetworkLayer(
     }),
     next => req => {
       let idToken = auth.getToken()
-      console.log(idToken)
       let headers = createHeaders(idToken)
       req.headers = {
         ...req.headers,

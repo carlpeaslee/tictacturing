@@ -35,7 +35,7 @@ class NavDrawer extends Component {
         >
           <AuthButton
             auth={this.props.auth}
-            authenticated={this.props.auth.getToken()}
+            authenticated={this.props.authenticated}
           />
           <Divider/>
           <MenuLink

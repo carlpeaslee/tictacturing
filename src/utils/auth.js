@@ -1,4 +1,5 @@
 import Auth0Lock from 'auth0-lock'
+import Relay from 'react-relay'
 import {auth0Domain, auth0ClientId} from '../config/auth0'
 import {cyan500} from 'material-ui/styles/colors'
 import CreateUser from '../mutations/CreateUser'
@@ -50,21 +51,31 @@ class AuthService {
     } = authResult.idTokenPayload
     console.log(email)
     const idToken = authResult.idToken
-    this.setToken({
-      idToken,
-      exp
-    })
 
+    this.signinUser({
+      idToken,
+      email,
+      exp
+    }).then(
+      success => success,
+      rejected => {
+        this.createUser({
+          idToken,
+          email,
+          exp
+        }).then()
+      }
+    )
   }
 
   isCurrent() {
     let expString = localStorage.getItem('exp')
     if (!expString) {
-      this.logout()
+      localStorage.removeItem('idToken')
       return false
     }
     let now = new Date()
-    let exp =  new Date(expString) //the ten here is for radix
+    let exp =  new Date(expString)
     if (exp < now) {
       this.logout()
       return false
@@ -78,7 +89,8 @@ class AuthService {
     if (this.isCurrent() && idToken) {
       return idToken
     } else {
-      this.logout()
+      localStorage.removeItem('idToken')
+      localStorage.removeItem('exp')
       return false
     }
   }
@@ -87,8 +99,51 @@ class AuthService {
   logout() {
     localStorage.removeItem('idToken')
     localStorage.removeItem('exp')
+    location.reload()
   }
 
+
+  createUser = (authFields) => {
+    return new Promise( (resolve, reject) => {
+      Relay.Store.commitUpdate(
+        new CreateUser({
+          email: authFields.email,
+          idToken: authFields.idToken,
+          name: authFields.name
+        }), {
+          onSuccess: (response) => {
+            this.signinUser(authFields)
+            resolve(response)
+          },
+          onFailure: (response) => {
+            console.log('CreateUser error', response)
+            reject(response)
+          }
+        }
+      )
+    })
+  }
+
+  signinUser = (authFields) => {
+    let {
+      idToken,
+    } = authFields
+    return new Promise ( (resolve, reject) => {
+      Relay.Store.commitUpdate(
+        new SigninUser({
+          idToken
+        }), {
+          onSuccess: (response) => {
+            this.setToken(authFields)
+            resolve(idToken)
+          },
+          onFailure: (response) => {
+            reject(response.getError())
+          }
+        }
+      )
+    })
+  }
 
 }
 

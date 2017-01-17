@@ -16,6 +16,7 @@ class Template extends Component {
         <div>
           <NavDrawer
             auth={this.props.route.auth}
+            authenticated={this.props.viewer.user}
           />
           <SiteHeader/>
           <Main>
