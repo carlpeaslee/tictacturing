@@ -4,6 +4,7 @@ import {Stage} from 'react-konva'
 import Board from '../styled/Board'
 import Squares from '../styled/Squares'
 import TuringTest from '../styled/TuringTest'
+import CreateGame from '../mutations/CreateGame'
 
 class TicTacToe extends Component {
 
@@ -126,8 +127,33 @@ class TicTacToe extends Component {
   }
 
   recordGame = (guess) => {
-    console.log(guess)
-
+    let {
+      self,
+      relay
+    } = this.props
+    let {
+      winner,
+      ownMark
+    } = this.state
+    if (self) {
+      let winnerId = (winner === ownMark) ? self.id : undefined
+      let guessCorrect = ('ROBOT') ? true : false
+      relay.commitUpdate(
+        new CreateGame({
+          self,
+          winnerId,
+          guess,
+          guessCorrect
+        })
+      )
+    }
+    this.setState({
+      gameState: new Array(9).fill(false),
+      gameOver: false,
+      yourTurn: true,
+      winner: false,
+      win: false,
+    })
   }
 
 
