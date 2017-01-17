@@ -1,6 +1,6 @@
 import Relay from 'react-relay'
 
-class SigninUserMutation extends Relay.Mutation {
+export default class SigninUserMutation extends Relay.Mutation {
   getMutation() {
     return Relay.QL`mutation {signinUser}`
   }
