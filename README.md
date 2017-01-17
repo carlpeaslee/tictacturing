@@ -1,5 +1,5 @@
 #02_07_end
-
+[Previous Video](../../tree/02_06_end) | [Next Video](../../tree/02_08_end)
 ##Building TicTacToe Part 3
 
 [Live on Heroku](https://tictacturing-02-07.herokuapp.com/)
@@ -179,3 +179,5 @@ class TicTacToe extends Component {
 
 export default TicTacToe
 ```
+
+[Previous Video](../../tree/02_06_end) | [Next Video](../../tree/02_08_end)
