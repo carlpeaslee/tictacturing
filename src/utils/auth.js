@@ -55,14 +55,15 @@ class AuthService {
 
   }
 
+
   isCurrent() {
     let expString = localStorage.getItem('exp')
     if (!expString) {
-      this.logout()
+      localStorage.removeItem('idToken')
       return false
     }
     let now = new Date()
-    let exp =  new Date(expString) //the ten here is for radix
+    let exp =  new Date(expString)
     if (exp < now) {
       this.logout()
       return false
@@ -76,7 +77,8 @@ class AuthService {
     if (this.isCurrent() && idToken) {
       return idToken
     } else {
-      this.logout()
+      localStorage.removeItem('idToken')
+      localStorage.removeItem('exp')
       return false
     }
   }
@@ -85,6 +87,7 @@ class AuthService {
   logout() {
     localStorage.removeItem('idToken')
     localStorage.removeItem('exp')
+    location.reload()
   }
 
 
