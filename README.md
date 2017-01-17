@@ -7,7 +7,7 @@ _Play simple games. Unmask robot impostors._
 ###Getting to MVP
 _**Quickly Write and Deploy A React and Relay Application with [Graph.Cool](https://www.graph.cool/), [Auth0](https://auth0.com/), and [Heroku](https://www.heroku.com/)**_
 
-Course by [Carl Peaslee](../../../carlpeaslee)
+Course by [Carl Peaslee](../../../../carlpeaslee)
 
 | Exercise File | Video | Demo Site | Todo |
 | ------------- | ----- | --------- | --- |
