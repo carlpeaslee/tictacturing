@@ -1,6 +1,8 @@
 import Auth0Lock from 'auth0-lock'
 import {auth0Domain, auth0ClientId} from '../config/auth0'
 import {cyan500} from 'material-ui/styles/colors'
+import CreateUser from '../mutations/CreateUser'
+import SigninUser from '../mutations/SigninUser'
 
 class AuthService {
   constructor(clientId, domain) {
