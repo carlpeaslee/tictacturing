@@ -1,5 +1,5 @@
 #02_04_end
-
+[Previous Video](../../tree/02_03_end) | [Next Video](../../tree/02_05_end)
 ##Styling the template
 
 [View live on Heroku](https://tictacturing-02-04.herokuapp.com/)
@@ -225,3 +225,5 @@ class Template extends Component {
 
 export default Template
 ```
+
+[Previous Video](../../tree/02_03_end) | [Next Video](../../tree/02_05_end)
