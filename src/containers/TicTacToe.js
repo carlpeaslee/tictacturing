@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import Relay from 'react-relay'
 import {Stage} from 'react-konva'
 import Board from '../styled/Board'
 import Squares from '../styled/Squares'
+import TuringTest from '../styled/TuringTest'
 
 class TicTacToe extends Component {
 
@@ -114,12 +116,18 @@ class TicTacToe extends Component {
   }
 
   makeTuringTest = () => {
-    //generate the turing test after the game is over
+    if (this.state.gameOver) {
+      return (
+        <TuringTest
+          recordGame={this.recordGame}
+        />
+      )
+    }
   }
 
-  recordGame = () => {
-    //this is where we'll make our mutation to our
-    //relay store when a game is over
+  recordGame = (guess) => {
+    console.log(guess)
+
   }
 
 
@@ -157,10 +165,20 @@ class TicTacToe extends Component {
             move={this.move}
           />
         </Stage>
-          {/* <TuringTest/> */}
+        {this.makeTuringTest()}
       </div>
     )
   }
 }
 
-export default TicTacToe
+export default Relay.createContainer(
+  TicTacToe, {
+    fragments: {
+      self: () => Relay.QL`
+        fragment on User {
+          id
+        }
+      `,
+    },
+  }
+)

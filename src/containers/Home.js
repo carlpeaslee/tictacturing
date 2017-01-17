@@ -6,7 +6,9 @@ class Home extends Component {
 
   render () {
     return (
-      <TicTacToe/>
+      <TicTacToe
+        self={this.props.viewer.user}
+      />
     )
   }
 }
@@ -18,6 +20,7 @@ export default Relay.createContainer(
         fragment on Viewer {
           user {
             id
+            ${TicTacToe.getFragment('self')}
           }
         }
       `,
