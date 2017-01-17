@@ -1,5 +1,5 @@
 #02_03_end
-
+[Previous Video](../../tree/02_02_end) | [Next Video](../../tree/02_04_end)
 ##Using styled-components
 
 [Live on Heroku](https://tictacturing-02-03.herokuapp.com/)
@@ -197,3 +197,5 @@ export default DrawerToggleButton
 ```
 
 Ok, great, my components are all rendering the way I want them to.
+
+[Previous Video](../../tree/02_02_end) | [Next Video](../../tree/02_04_end)
