@@ -4,6 +4,8 @@ _Play simple games. Unmask robot impostors._
 
 ##Getting to MVP: Quickly Write and Deploy A React and Relay Application with Graph.Cool, Auth0, and Heroku
 
+Course by [Carl Peaslee](/carlpeaslee)
+
 | Exercise File | Video | Demo Site | Todo |
 | ------------- | ----- | --------- | --- |
 | 00_00 [start](../../tree/00_00_start) | Introduction | - |
