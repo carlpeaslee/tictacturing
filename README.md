@@ -14,6 +14,7 @@ We’ll begin by importing our soon to be created component into Template and th
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+//import our soon to be created NavDrawer
 import NavDrawer from '../components/NavDrawer'
 
 
@@ -25,6 +26,7 @@ class Template extends Component {
     return (
       <MuiThemeProvider>
         <div>
+          {/*Add our NavDrawer to our component*/}
           <NavDrawer/>
           <header>
             <h1>TicTacTuring</h1>
@@ -44,19 +46,11 @@ export default Template
 
 Now I’m going to create my component
 
-And I’m going to export it.
-
-Now I’m going to bring in my material ui components.
-
-I think I’m going to want a Floating Action Button for opening and closing the drawer. And the menu icon to go inside of it.
-
-And of course the drawer component. And then I’ll want a menu-item, and a divider.
-
-I’ll import each of these to my component and then add them to the render function.
 
 ```javascript
 /*    /src/components/NavDrawer.js    */
 import React, {Component} from 'react'
+//Bring in the material-ui components I want
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
@@ -100,7 +94,32 @@ Now let’s write the function that will open and close the drawer.
 
 I’ll create a toggle function here that will say whenever this function gets called, look at the previous state of open and then set the new state to be the opposite of that.
 
-And I’ll pass my toggle function to my button as a prop. And notice here that I’m using that ‘onTouchTap’ prop that we injected earlier. I could say onClick –– and for non-material-ui components, that’s usually what you’d want to do –– but for Material-Ui components, onTouchTap tends to work better for mobile devices.
+If the way I'm writing `this.setState()` looks different to you, don't worry! You've probably seen this same method used like this:
+
+```javascript
+
+  toggle = () => {
+    this.setState({
+      open: !this.state.open
+    })
+  }
+
+```
+
+But actually, because `setState()` is technically asynchronous, we should avoid referencing state within `setState()`. Instead, we should use this awesome syntax which allows us to access the previous state and also are components props. That way we won't have any strange behaviors as a result of asynchronous actions.
+
+```javascript
+  toggle = () => {
+    this.setState( (prevState, props) => {
+      return {
+        open: !prevState.open
+      }
+    })
+  }
+```
+
+
+Next, in my component, I’ll pass my toggle function to my button as a prop. And notice here that I’m using that ‘onTouchTap’ prop that we injected earlier. I could say onClick –– and for non-material-ui components, that’s usually what you’d want to do –– but for Material-Ui components, onTouchTap tends to work better for mobile devices.
 
 I’m also going to give this toggle function to each of my menu-items because I want my drawer to close when the user selects either of them.
 
@@ -253,7 +272,7 @@ export default NavDrawer
 
 Let’s test... Great, our routing is working... But I don’t like the way my menu-items are underlined like that.
 
-It looks like the Link’s root a html tag’s default text-decoration underline is being inherited by the list item being created by the MenuItem component.
+It looks like the Link’s root A html tag's text-decoration underline property is being inherited by the list item being created by the MenuItem component.
 
 I also don’t like that my drawer toggle button is stuck behind the drawer like this.
 
