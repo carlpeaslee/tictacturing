@@ -1,9 +1,14 @@
 import React from 'react'
+import Relay from 'react-relay'
 import {Route, IndexRoute} from 'react-router'
 import Template from '../containers/Template'
 import Home from '../containers/Home'
 import Profile from '../containers/Profile'
 import auth from '../utils/auth'
+
+const ViewerQueries = {
+  viewer: () => Relay.QL`query { viewer }`
+}
 
 const createRoutes = () => {
   return (
@@ -11,13 +16,16 @@ const createRoutes = () => {
       path='/'
       component={Template}
       auth={auth}
+      queries={ViewerQueries}
     >
       <IndexRoute
         component={Home}
+        queries={ViewerQueries}
       />
       <Route
         path='/profile'
         component={Profile}
+        queries={ViewerQueries}
       />
     </Route>
   )

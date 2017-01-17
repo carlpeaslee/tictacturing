@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Relay from 'react-relay'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import NavDrawer from '../components/NavDrawer'
@@ -26,4 +27,16 @@ class Template extends Component {
   }
 }
 
-export default Template
+export default Relay.createContainer(
+  Template, {
+    fragments: {
+      viewer: () => Relay.QL`
+        fragment on Viewer {
+          user {
+            id
+          }
+        }
+      `,
+    },
+  }
+)
