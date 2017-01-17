@@ -277,3 +277,5 @@ It looks like the Link’s root A html tag's text-decoration underline property 
 I also don’t like that my drawer toggle button is stuck behind the drawer like this.
 
 It looks like I need to modify the styling of these two components. I could just do that here in this file with inline styles like I did with the login component –– but that was just supposed to be a placeholder. In general, I like to try and separate my functional components –– the ones that are dictating behavior from my presentational components –– the ones that are controlling the way things look.
+
+[Next Video](../02_02_end)
