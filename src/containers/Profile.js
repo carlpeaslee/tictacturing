@@ -5,32 +5,11 @@ import {Container, Name, GameListHeader, GameList, GameRecord, Column, ColumnLab
 
 class Profile extends Component {
 
-  static defaultProps = {
-    user: {
-      email: "USER_EMAIL",
-      games: [
-        {
-          winner: true,
-          createdAt: '12/25/2016',
-          id: '0001'
-        },
-        {
-          outcome: false,
-          createdAt: '12/26/2016',
-          id: '0002'
-        },
-        {
-          outcome: true,
-          createdAt: '12/27/2016',
-          id: '0003'
-        },
-      ]
-    }
-  }
-
-
   get records () {
-    return this.props.user.games.map((game, index)=>{
+    return this.props.viewer.user.p1games.edges.map((edge, index)=>{
+      let {
+        node: game,
+      } = edge
       return (
         <GameRecord
           key={game.id}
@@ -40,7 +19,13 @@ class Profile extends Component {
             {(game.winner) ? 'Won!' : "Didn't win"}
           </Column>
           <Column>
-            {game.createdAt}
+            {game.player1Guess}
+          </Column>
+          <Column>
+            {(game.player1GuessCorrect) ? 'Yes' : 'No'}
+          </Column>
+          <Column>
+            {new Date(game.createdAt).toLocaleDateString()}
           </Column>
         </GameRecord>
       )
@@ -51,7 +36,7 @@ class Profile extends Component {
   render () {
     let {
       email
-    } = this.props.user
+    } = this.props.viewer.user
     return (
       <Container>
         <Name>
@@ -64,6 +49,12 @@ class Profile extends Component {
           <ColumnLabels>
             <Column>
               Outcome
+            </Column>
+            <Column>
+              Guess
+            </Column>
+            <Column>
+              Guessed Correctly
             </Column>
             <Column>
               Date
@@ -83,6 +74,20 @@ export default Relay.createContainer(
         fragment on Viewer {
           user {
             id
+            email
+            p1games (first: 10) {
+              edges {
+                node {
+                  id
+                  createdAt
+                  winner {
+                    id
+                  }
+                  player1Guess
+                  player1GuessCorrect
+                }
+              }
+            }
           }
         }
       `,

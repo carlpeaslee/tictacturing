@@ -58,5 +58,5 @@ export const ColumnLabels = styled.div`
 
 export const Column = styled.span`
   display: flex;
-  width: 50%;
+  width: 25%;
 `
