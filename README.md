@@ -2,7 +2,7 @@
 
 _Play simple games. Unmask robot impostors._
 
-##Lynda.com Course Resources
+##Getting to MVP: Quickly Write and Deploy A React and Relay Application with Graph.Cool, Auth0, and Heroku
 
 | Exercise File | Video | Demo Site | Todo |
 | ------------- | ----- | --------- | --- |
