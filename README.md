@@ -4,4 +4,5 @@
 
 //go on graph.cool and create Models
 //dont forget to enable authentication
+//and adjust permissions 
 //create viewer queries and relay containers

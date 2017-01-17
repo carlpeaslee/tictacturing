@@ -8,7 +8,7 @@ import {
   RelayNetworkLayer,
   urlMiddleware
 } from 'react-relay-network-layer'
-import {relayApi} from './config/urls'
+import {relayApiUrl} from './config/urls'
 import auth from './utils/auth'
 
 const createHeaders = (idToken) => {
@@ -24,10 +24,11 @@ const createHeaders = (idToken) => {
 Relay.injectNetworkLayer(
   new RelayNetworkLayer([
     urlMiddleware({
-      url: (req) => relayApi,
+      url: (req) => relayApiUrl,
     }),
     next => req => {
       let idToken = auth.getToken()
+      console.log(idToken)
       let headers = createHeaders(idToken)
       req.headers = {
         ...req.headers,
