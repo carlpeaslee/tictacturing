@@ -1,4 +1,5 @@
 #02_06_end
+[Previous Video](../../tree/02_05_end) | [Next Video](../../tree/02_07_end)
 
 ##Building TicTacToe Part 2
 
@@ -118,6 +119,7 @@ export default TicTacToe
 ```
 And then the next thing I'm going to do is create my Squares component. And give nice shorthand names to all of the props that I passed to it.
 
+
 ```javascript
 /*    /src/styled/Squares   */
 import React from 'react'
@@ -128,9 +130,9 @@ const Squares = ({
   coordinates,
   gameState,
   win,
-  gameOver,
-  yourTurn,
-  ownMark,
+  gameOver,           //this looks confusing but I'm just taking
+  yourTurn,           //apart the props object and creating new variables
+  ownMark,            //based on the names of the values
   move
 }) => {
   let squares = coordinates.map( (position, index) => {
@@ -171,3 +173,5 @@ const Squares = ({
 
 export default Squares
 ```
+
+[Previous Video](../../tree/02_05_end) | [Next Video](../../tree/02_07_end)
