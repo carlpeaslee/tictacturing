@@ -14,7 +14,7 @@ const AuthButton = (props) => {
   } else {
     return (
       <RaisedButton
-        label={'Login'}
+        label={'Login / Signup'}
         onTouchTap={props.auth.showLock}
         fullWidth={true}
         primary
