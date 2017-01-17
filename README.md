@@ -1,5 +1,5 @@
 #02_05_end
-
+[Previous Video](../../tree/02_04_end) | [Next Video](../../tree/02_06_end)
 ##Building TicTacToe Part 1
 
 [Live on Heroku](https://tictacturing-02-05.herokuapp.com/)
@@ -281,3 +281,5 @@ export default Board
 And now when I start up my site...My board is being generated!
 
 Next let's make the squares.
+
+[Previous Video](../../tree/02_04_end) | [Next Video](../../tree/02_06_end)
