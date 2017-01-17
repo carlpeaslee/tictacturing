@@ -7,17 +7,37 @@ If you’re interested in other examples, the code I’m using for this project 
 
 I’m gong to start by bring in auth0-lock and some of my configuration information.
 
-Then i’m going to create a class.
+Then I’m going to create a class.
 
 First, I’ll give the class a constructor property –– this is where I’m saying how I will be creating my class, what information it needs... And then this next part is a configuration object –– which I’m just going to hard code here for simplicity –– this basically is going to tell auth0-lock how I want the lock widget to operate.
 
-There are lots more configuration options availabe to this API, I encourage you to check out the docs online. For right now though I’m going to say I want auth0 to return a token, that that token’s scope of access, kind of like its permission levels should be openid, then I’m going to style the widget a bit just for fun and give it the name of my site...
+There are lots more configuration options availabe to this API, I encourage you to check out the docs online. For right now though I’m going to say I want auth0 to return a token, that that token’s scope of access, kind of like its permission levels should be openid, then I’m going to style the widget a bit just for fun and give it the name of my site...I'm also going to say that I want
 
 I’m also going to bind the lock.show method to my class so that its available from my components. Basically this is the function we need to call when we want to show the lock widget to our user.
 
 Then I’m going to tell my class to create an event listener that will wait for an ‘authenticated’ event. That’s the event that will trigger when we receive a successful response from one of our login attempts.
 
-So when I hear that authenticated event, I’m going to save the important information in my browsers local storage. If you’re not familiar with localstorage, here is some more info about it.
+So when I hear that authenticated event, I’m going to save the important information in my browsers local storage. If you’re not familiar with localstorage, know that we will be using three methods:
+
+```javascript
+
+/* localStorage*/
+
+//the browser lets us save small bits
+//of information to a clients local memory
+
+localStorage.setItem('rainbowsEnd', 'pot of gold')
+
+//localStorage now contains {rainbowsEnd: 'pot of gold'}
+
+let treasure = localStorage.getItem('rainbowsEnd')
+
+// treasure = 'pot of gold'
+
+localStorage.removeItem('rainbowsEnd')
+
+//localStorage no longer holds {rainbowsEnd: 'pot of gold'}
+```
 
 Next I’m going to create a method that will allow me to determine whether or not the token currently in local storage is expired or not.
 
