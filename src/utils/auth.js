@@ -38,7 +38,7 @@ class AuthService {
       exp
     } = authFields
     localStorage.setItem('idToken', idToken)
-    localStorage.setItem('expiration', exp)
+    localStorage.setItem('exp', exp * 1000)
   }
 
   authProcess = (authResult) => {
@@ -46,7 +46,7 @@ class AuthService {
       exp,
       email
     } = authResult.idTokenPayload
-    console.log('email', email)
+    console.log(email)
     const idToken = authResult.idToken
     this.setToken({
       idToken,
@@ -55,15 +55,14 @@ class AuthService {
 
   }
 
-
   isCurrent() {
-    let expString = localStorage.getItem('expiration')
+    let expString = localStorage.getItem('exp')
     if (!expString) {
       this.logout()
       return false
     }
-    let now = Date.now()
-    let exp = new Date(parseInt(expString, 10))
+    let now = new Date()
+    let exp =  new Date(expString) //the ten here is for radix
     if (exp < now) {
       this.logout()
       return false
@@ -74,7 +73,7 @@ class AuthService {
 
   getToken() {
     let idToken = localStorage.getItem('idToken')
-    if (this.current() && idToken) {
+    if (this.isCurrent() && idToken) {
       return idToken
     } else {
       this.logout()
@@ -85,7 +84,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('idToken')
-    localStorage.removeItem('expiration')
+    localStorage.removeItem('exp')
   }
 
 

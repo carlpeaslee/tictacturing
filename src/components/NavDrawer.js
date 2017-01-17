@@ -22,6 +22,7 @@ class NavDrawer extends Component {
 
 
   render () {
+    auth.getToken()
     return (
       <div>
         <DrawerToggleButton
@@ -38,7 +39,8 @@ class NavDrawer extends Component {
               height: '100px',
               backgroundColor: 'salmon'
             }}
-            onClick={auth.showLock}
+            onClick={auth.logout}
+            onDoubleClick={auth.showLock}
           >
             Login Component
           </div>
