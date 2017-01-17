@@ -10,6 +10,12 @@ const ViewerQueries = {
   viewer: () => Relay.QL`query { viewer }`
 }
 
+const userOnly = (nextState, replace) => {
+  if (!auth.getToken()) {
+    replace('/')
+  }
+}
+
 const createRoutes = () => {
   return (
     <Route
@@ -26,6 +32,7 @@ const createRoutes = () => {
         path='/profile'
         component={Profile}
         queries={ViewerQueries}
+        onEnter={userOnly}
       />
     </Route>
   )

@@ -20,6 +20,17 @@ class NavDrawer extends Component {
     })
   }
 
+  get showIfAuthenticated () {
+    if (this.props.authenticated) {
+      return (
+        <MenuLink
+          to={'/profile'}
+          onTouchTap={this.toggle}
+          primaryText={'Profile'}
+        />
+      )
+    }
+  }
 
   render () {
     return (
@@ -43,11 +54,8 @@ class NavDrawer extends Component {
             onTouchTap={this.toggle}
             primaryText={'Play'}
           />
-          <MenuLink
-            to={'/profile'}
-            onTouchTap={this.toggle}
-            primaryText={'Profile'}
-          />
+
+          {this.showIfAuthenticated}
 
 
         </Drawer>
